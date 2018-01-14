@@ -1,0 +1,41 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./index2.css"/>
+  <script src="./index2.js"></script>
+  
+</head>
+
+<body ng-app="viz" ng-controller="lastfmCtrl" scrolling="yes">
+  <div class="topBar">
+  <span class="banner">
+    ANGULAR 1.5 + D3 + LAST.FM API
+  </span>
+  <span class="nextThing">
+    Click Artist To Set Background
+  </span>
+</div>
+
+  <div class="container">
+
+    <div class="top-container">
+      <span class="reach" ng-click="tagsize = 'reach'">REACH</span>
+      <span class="tags" ng-click="tagsize = 'taggings'">TAGS</span>
+      <toptag-chart></toptag-chart>
+    </div>
+    <div class="chart2">
+      <div class="active-tag">
+        <p>ACTIVE TAG: {{ currtag || 'click a bubble above.' }} </p>
+        <artists-chart artists="artists"></artists-chart>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>

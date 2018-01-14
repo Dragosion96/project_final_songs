@@ -1,0 +1,200 @@
+body,
+html {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/badbrains.jpg) no-repeat fixed center top;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  overflow: scroll;
+  overflow-x: hidden;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.container {
+  margin: auto;
+  width: 100%;
+}
+
+.container:before {
+  content: ' ';
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background: url(http://www.transparenttextures.com/patterns/squairy.png) repeat;
+}
+
+text {
+  font: 1.1em "TrashHand";
+  pointer-events: none;
+  letter-spacing: 0.0em;
+  fill: deeppink;
+}
+
+.top-container {
+  position: relative;
+  text-align: right;
+  padding: 0px 30px 0px 20px;
+}
+
+.reach {
+  position: absolute;
+  color: deepskyblue;
+  font-family: 'hardcore_pen';
+  font-size: 4em;
+  left: 0;
+  cursor: pointer;
+}
+
+.tags {
+  position: absolute;
+  color: deepskyblue;
+  font-family: 'hardcore_pen';
+  font-size: 4em;
+  right: 0;
+  cursor: pointer;
+}
+
+.tag-cloud,
+.active-tag > p {
+  position: absolute;
+  color: deepskyblue;
+  font-family: 'hardcore_pen';
+  font-size: 3em;
+  line-height: .5em !important;
+  text-align: left;
+  margin-top: -25px !important;
+}
+
+#loading {
+  font-size: 50px;
+  fill: deeppink;
+}
+
+.number {
+  font-size: 30px;
+  fill: deeppink;
+  opacity: 1;
+}
+
+circle {
+  opacity: .6;
+  stroke: whitesmoke;
+  stroke-width: 1px;
+}
+
+circle:hover, .active-tag circle:hover {
+  opacity: .4;
+  cursor: pointer;
+}
+
+.active-tag circle {
+  opacity: 0;
+}
+
+
+.bottomBar {
+  font-family: 'PixelSix14';
+  color: white;
+  font-size: 12px;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 16px;
+  background: black;
+  bottom: 0;
+  z-index: 10;
+}
+
+.moreJoey a {
+  right: 3px;
+  margin-bottom: 2px;
+  text-decoration: none;
+  text-align: right;
+  float: right;
+  margin-right: 3px;
+  color: yellow;
+}
+
+
+.topBar {
+  font-family: 'PixelSix14';
+  color: white;
+  font-size: 12px;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 16px;
+  background: black;
+  top: 0;
+  z-index: 10;
+}
+.miniLoad, .loadingInfo, .banner {
+  margin-left: 3px;
+}
+.moreJoey a, .nextThing {
+  right: 3px;
+  margin-bottom: 2px;
+}
+.loadingInfo, .miniLoad, .moreJoey a, .nextThing {
+  text-decoration: none;
+  text-align: right;
+}
+.moreJoey a, .nextThing {
+  float: right;
+  margin-right: 3px;
+}
+.miniLoad, .moreJoey a {
+    color: yellow;
+}
+.nextThing {
+  padding-top: 1px !important;
+  color: white;
+}
+
+.topBar .banner { 
+  position: absolute;
+  margin-top: 1px !important;
+}
+
+@font-face {font-family: "TrashHand";
+    src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/TrashHand.eot");
+    src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/TrashHand.eot?#iefix") format("embedded-opentype"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/TrashHand.woff") format("woff"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/TrashHand.ttf") format("truetype"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/TrashHand.svg#TrashHand") format("svg");
+}
+
+@font-face {font-family: "hardcore_pen";
+    src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/hardcore_pen.eot");
+    src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/hardcore_pen.eot?#iefix") format("embedded-opentype"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/hardcore_pen.woff") format("woff"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/hardcore_pen.ttf") format("truetype"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/hardcore_pen.svg#hardcore_pen") format("svg");
+}
+
+@font-face {
+  font-family: "PixelSix14";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/PixelSix14.eot");
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/PixelSix14.eot?#iefix") format("embedded-opentype"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/PixelSix14.ttf") format("truetype"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/143273/PixelSix14.svg#PixelSix14") format("svg");
+}

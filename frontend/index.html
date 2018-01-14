@@ -1,0 +1,173 @@
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;  }
+
+.innerWrapper {
+	max-width: 920px;
+	margin: 0 auto;
+}
+
+h2, h4 {
+	font-family: 'Abril Fatface', serif;
+}
+
+h2 {
+	font-size: 3rem;
+	text-align: center;
+	padding-top: 100px;
+	margin: 0 0 30px 0;
+}
+
+.wrap {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -86px;
+	margin-left: -89px;
+	text-align: center;
+}
+
+button { 
+  border-radius: 50%; 
+  width: 200px;
+  height: 200px;
+  border: none;
+  color: white;
+  font-family: Avenir, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  background: 	rgb(51,0,51);
+  text-shadow: 0 3px 1px rgba(122,17,8,.8);
+  box-shadow: 	rgb(128,0,128);
+  text-transform: uppercase;
+  transition: .4s all ease-in;
+  outline: none; 
+  cursor: pointer;
+  text-align: center;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+button span { position: relative; }
+/* fix for IE 11 (and IE8+, although the earlier versions are harder to address) stupidly moving the inner button text on click */
+.pressed { 
+  padding-top: 3px;
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 rgb(183,0,0),
+    0 8px 6px rgba(0,0,0,.45);
+}
+
+
+/* NAV SECTION */
+
+.companyName {
+	padding: 18px 17px 18px 15%;
+	margin: 0;
+	float: left;
+	color: #fff;
+	width: 45%;
+	background: rgba(0,0,0,0.7);
+	font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+	font-size: 1.8rem;
+	text-align: left;
+  font-variant: small-caps;
+}
+
+nav {
+	padding: 0;
+	margin: 0;
+	width: 55%;
+	float: right;
+}
+
+
+header nav ul {
+	float: right;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	border-right: 20px solid rgba(0,0,0,0.7);
+}
+
+header nav ul li {
+	float: left;
+	margin: 0;
+	display: inline;
+	width: 25%;
+	text-align: center;
+	background: rgba(0,0,0,0.7);
+}
+
+header nav ul li:hover {
+	background: none;
+  font-style: bold;
+  transform: scale(1.2);
+}
+
+header nav ul li a {
+	text-decoration: none;
+	padding: 25px 20px;
+	color: #fff;
+	margin: 0;
+	display: inline-block;
+	text-transform: uppercase;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 1rem;
+}
+
+header nav ul li a:focus {
+	outline: none;
+}
+
+/* HEAD SECTION */
+
+header {
+	background-image: url('https://orig00.deviantart.net/27c6/f/2017/285/0/f/neon_sunset_4k_by_axiomdesign-dbqddb9.png');
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.hero {
+	text-align: center;
+	text-shadow: 1px 0 2px #595859;
+}
+
+.hero h1 {
+	font-size: 5.5rem;
+	margin:0;
+	padding-top: 200px;
+	font-family: 'Abril Fatface', serif;
+	color: #fff;
+}
+
+.hero h3 {
+	padding-bottom: 250px;
+	font-family: 'Quicksand', sans-serif;
+	font-style: italic;
+	color: #fff;
+	font-size: 1.7rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+
+@media (max-width:900px) {
+  .companyName {
+    width: 100%;
+    text-align: center;
+    padding: 4% 4%;
+  }
+  
+ .mainNav {
+    width: 100%;
+  }
+  
+  header nav ul {
+    border: none;
+  }
+  
+  header nav ul li a {
+    padding: 25px 2%;
+  }
+}

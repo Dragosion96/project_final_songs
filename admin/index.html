@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Jquery JS file -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Bootstrap CSS File  -->
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+<!-- Bootstrap JS file -->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Custom JS file -->
+<script type="text/javascript" src="js/script.js"></script>
+
+
+
+</head>
+<body>
+
+<!-- Content Section -->
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<h1>Project-Management of favourite songs</h1>
+</div>
+</div>
+<br/>
+<div class="row">
+<div class="col-md-12">
+<div class="pull-right">
+<button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Add</button>
+<button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Update</button>
+<button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Delete</button>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<div class="records_content">
+<br/>
+<h3>Songs</h3>
+<table id="songs" class="table table-bordered table-striped">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>CategoriesID</th>
+							<th>ArtistID</th>
+							<th>Autori</th>
+							<th>Update</th>
+							<th>Delete</th>
+						</tr>
+		</tr>
+				</<table>
+</div>
+</div>
+</div>
+</div>
+<!-- /Content Section -->
+
+
+
+<!-- Bootstrap Modals -->
+<!-- Modal - Add New Article -->
+<div class="modal fade" id="add_new_record_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+
+<h4 class="modal-title" id="myModalLabel">Add New Article</h4>
+</div>
+<div class="modal-body">
+<form id="record_form">
+<input type="hidden" name="id" id="id" />
+<div class="form-group">
+<label for="title">Title</label>
+<input type="text" name="title" id="title" placeholder="Title" class="form-control"/>
+</div>
+
+<div class="form-group">
+<label for="abstract">Abstract</label>
+<textarea name="abstract" id="abstract" placeholder="Abstract" rows="5" class="form-control"></textarea>
+</div>
+
+<div class="form-group">
+<label for="name">Name</label>
+<input name="name" type="text" id="name" placeholder="name" class="form-control"/>
+</div>
+
+<div class="form-group">
+<label for="keywords">Keywords</label>
+<input name="keywords" type="text" id="keywords" placeholder="Keywords" class="form-control"/>
+</div>
+
+<div class="form-group">
+<label for="url">URL</label>
+<input name="url" type="text" id="url" placeholder="URL" class="form-control"/>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+<button type="button" class="btn btn-primary" onclick="saveRecord()">Save Record</button>
+</div>
+</div>
+</div>
+</div>
+<!-- // Modal -->
+ <script type="text/javascript">
+  $(document).ready(function () {
+function readRecords() {
+    $.get("/songs/", {}, function (data, status) {
+        data.forEach(function(value) {
+            var row = '<tr id="row_id_'+ value.id +'">'
+			+ displayColumns(value)
+				+ '</tr>';
+            $('#songs').append(row);
+        });
+    });
+}
+
+function displayColumns(value) {
+    return 	'<td>'+value.id+'</td>'
+            + '<td class="title">'+value.title+'</td>'
+			+ '<td class="abstract">'+value.abstract.substring(0,255)+' ...</td>'
+			+ '<td class="authors">'+value.name+'</td>'
+			+ '<td align="center">'
+			+	'<button onclick="viewRecord('+ value.id +')" class="btn btn-edit">Update</button>'
+			+ '</td>'
+			+ '<td align="center">'
+			+	'<button onclick="deleteRecord('+ value.id +')" class="btn btn-danger">Exclude</button>'
+			+ '</td>';
+}
+
+function addRecord() {
+    $('#id').val('');
+    $('#title').val('');
+    $('#abstract').val('');
+    $('#authors').val('');
+    $('#keywords').val('');
+    $('#url').val('');
+
+    $('#myModalLabel').html('Add New Song');
+    $('#add_new_record_modal').modal('show');
+}
+
+function viewRecord(id) {
+    var url = "/songs/" + id;
+
+    $.get(url, {}, function (data, status) {
+        //bind the values to the form fields
+        $('#title').val(data.title);
+        $('#abstract').val(data.abstract);
+        $('#authors').val(data.authors);
+        $('#keywords').val(data.keywords);
+        $('#url').val(data.url);
+
+        $('#id').val(id);
+        $('#myModalLabel').html('Edit Article');
+
+        $('#add_new_record_modal').modal('show');
+    });
+}
+function saveRecord() {
+    var formData = $('#record_form').serializeObject();
+    if(formData.id) {
+        updateRecord(formData);
+    } else {
+        createRecord(formData);
+    }
+}
+
+function createRecord(formData) {
+    $.ajax({
+        url: '/songs/',
+        type: 'POST',
+        accepts: {
+            json: 'application/json'
+        },
+        data: formData,
+        success: function(data) {
+            $('#add_new_record_modal').modal('hide');
+
+            var row = '<tr id="row_id_'+ data.id +'">'
+			+ displayColumns(data)
+				+ '</tr>';
+            $('#articles').append(row);
+        } 
+    });
+}
+
+function updateRecord(formData) {
+    $.ajax({
+        url: '/songs/'+formData.id,
+        type: 'PUT',
+        accepts: {
+            json: 'application/json'
+        },
+        data: formData,
+        success: function(data) {
+$('#row_id_'+formData.id+'>td.title').html(formData.title);
+            $('#row_id_'+formData.id+'>td.abstract').html(formData.abstract.substring(0,255)+' ...');
+            $('#row_id_'+formData.id+'>td.authors').html(formData.authors);
+            $('#add_new_record_modal').modal('hide');
+        } 
+    });
+}
+function deleteRecord(id) {
+    $.ajax({
+        url: '/songs/'+id,
+        type: 'DELETE',
+        success: function(data) {
+            $('#row_id_'+id).remove();
+        }
+    });
+}
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+}
+
+</script>
+
+
+
+
+</body>
+</html>

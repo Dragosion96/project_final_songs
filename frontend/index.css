@@ -1,0 +1,47 @@
+body {
+  background-image: url('http://blog.hostbaby.com/wp-content/uploads/2017/04/Spotify_logo_horizontal_black.jpg');
+}
+.top {
+font-family: oswald;
+  font-size: 70px;
+  color: #fff;
+  text-align: center;
+}
+.music {
+  list-style: none;
+  background: #800080;
+  padding: 10px;
+  margin-left: -25px;
+  font-family: oswald;
+  color: #D8BFD8;
+  width: 550px;
+  font-size: 20px;
+}
+.music:nth-child(odd) {
+  background: #DDA0DD;
+  color:#FF69B4;
+}
+.sub {
+  font-size: 30px;
+  margin-top: -20px;
+  color: #fff;
+  letter-spacing: 15px;
+}
+.title {
+  color: #fff;
+  font-family: oswald;
+  font-size: 30px;
+  padding: 10px;
+}
+.body {
+  width: 600px;
+  padding-bottom: 20px;
+  background: rgb(0,0,0);
+  margin-left: auto;
+  margin-right: auto;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+}
